@@ -3,10 +3,15 @@
 # this file must have unix newlines (to prevent extraneous errors when running)
 # must run sudo on ubuntu
 
-# create version with date and a shell file to name output with the date
-python3.3 buildVersion.py
+if [ ! -d build ]
+  then 
+    mkdir build
+fi
 
-BUILT64=exe.linux-x86_64-3.3
+# create version with date and a shell file to name output with the date
+python3.5 buildVersion.py
+
+BUILT64=exe.linux-x86_64-3.5
 
 if [ -d build/${BUILT64} ]
   then
@@ -20,7 +25,7 @@ if [ ! -d dist ]
 fi
 
 # run cx_Freeze setup
-python3.3 setup.py build_exe
+python3.5 setup.py build_exe
 cp arelle/scripts-unix/* build/${BUILT64}
 
 cd build/${BUILT64}
